@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 public class GetWebsite {
+    private String id;
+
     private String websiteName;
 
     private Timestamp downloadStartTime;
@@ -15,6 +17,15 @@ public class GetWebsite {
     private long totalDownloadedFilesKilobytes;
 
     public GetWebsite() {
+    }
+
+    public GetWebsite(String id, String websiteName, Timestamp downloadStartTime, Timestamp downloadEndTime, long totalElapsedTime, long totalDownloadedFilesKilobytes) {
+        this.id = id;
+        this.websiteName = websiteName;
+        this.downloadStartTime = downloadStartTime;
+        this.downloadEndTime = downloadEndTime;
+        this.totalElapsedTime = totalElapsedTime;
+        this.totalDownloadedFilesKilobytes = totalDownloadedFilesKilobytes;
     }
 
     public GetWebsite(String websiteName, Timestamp downloadStartTime, Timestamp downloadEndTime, long totalElapsedTime, long totalDownloadedFilesKilobytes) {

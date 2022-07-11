@@ -5,13 +5,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import rca.ne.client.dtos.GetWebsite;
+import rca.ne.client.dtos.link;
 import rca.ne.client.dtos.webSiteDto;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/website")
@@ -30,7 +33,7 @@ public class WebSiteController {
         String URL = "http://localhost:8000/api/v1/websites/get-all";
         GetWebsite[] websites = restTemplate.getForObject(URL, GetWebsite[].class);
         model.addAttribute("websites", websites);
-
+        System.out.println(websites);
         return "ViewAllWebsites";
     }
 
@@ -47,6 +50,17 @@ public class WebSiteController {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<?> responseEntity = restTemplate.postForEntity("http://localhost:8000/api/v1/websites/url",dto,GetWebsite.class);
         return "redirect:/view-all-websites";
+    }
+
+    @GetMapping("/links/{id}")
+    public String getLinks(@PathVariable UUID id, Model model) {
+        //get all users
+        RestTemplate restTemplate = new RestTemplate();
+        String URL = "http://localhost:8000/api/v1/websites-links/get-links-by-website/"+id;
+        link links = restTemplate.getForObject(URL, link.class);
+        model.addAttribute("links", links);
+
+        return "viewLinks";
     }
 
 

@@ -40,6 +40,10 @@ public class LinkController {
         return ResponseEntity.created(null).build();
     }
 
+    @GetMapping("/get-links-by-website/{id}")
+    public List<Link> getLinksByWebsite(@PathVariable UUID id) {
+        return linkService.getLinksByWebsite(id);
+    }
 
 
 }

@@ -73,16 +73,14 @@
 <body>
 <jsp:include page="components/Navbar.jsp"></jsp:include>
 <div class="view-employees-container">
-    <h2>View WEbsites</h2>
+    <h2>View Links</h2>
     <input type="button"  value="Add new " class="modification-buttons"  onclick="window.location.href='/website/register'"/>
 
     <div class="view-employees-container-sub">
         <table>
             <thead class="table-header">
-
-            <th>website name</th>
-            <th>downloadStartTime</th>
-            <th>downloadEndTime</th>
+            <th>link name</th>
+            <th>website</th>
             <th>totalElapsedTime</th>
             <th>totalDownloadedFilesKilobytes</th>
             <th colspan="2">Action</th>
@@ -90,18 +88,16 @@
 
             </thead>
             <tbody class="table-body">
-            <c:forEach items="${websites}" var="website">
+            <c:forEach items="${links}" var="link">
                 <tr >
-<%--                    <td>${website.id}</td>--%>
-                    <td>${website.websiteName}</td>
-                    <td>${website.downloadStartTime}</td>
-                    <td>${website.downloadEndTime}</td>
-                    <td>${website.totalElapsedTime}</td>
-                    <td>${website.totalDownloadedFilesKilobytes}</td>
+                    <td>${link.linkName}</td>
+                    <td>${link.website.id}</td>
+                    <td>${link.totalElapsedTime}</td>
+                    <td>${link.totalDownloadedFilesKilobytes}</td>
 
-                    <td>
+<%--                    <td>--%>
 <%--                        <input type="button" name="${website.id}" value="Edit" class="modification-buttons"  onclick="window.location.href='website/links?id=${website.id}'"/>--%>
-                    </td>
+<%--                    </td>--%>
                 </tr>
 
             </c:forEach>

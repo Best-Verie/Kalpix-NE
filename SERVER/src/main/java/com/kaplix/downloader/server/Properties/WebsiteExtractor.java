@@ -25,7 +25,7 @@ public class WebsiteExtractor {
             for(Element link : links) {
 
                 // download the content of the link
-                System.out.println("link: " + link.attr("href"));
+                System.out.println("downloading..........: " + link.attr("href"));
                 downloadWebsite(link.attr("href"));
             }
 
@@ -64,6 +64,8 @@ public class WebsiteExtractor {
                 linksSaved.add(linkFound);
 
             }
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -220,14 +222,14 @@ public class WebsiteExtractor {
 
 
     public static void  main(String[] args) throws Exception {
-        String url = "https://www.geeksforgeeks.org/";
-
-        new WebsiteExtractor().downloadWebsite(url);
-
-        new WebsiteExtractor().extractLinks(url);
-
-        long total = new WebsiteExtractor().countTotalKilobytes("src/main/java/downloadedPages/"+new WebsiteExtractor().extractWebname("https://www.geeksforgeeks.org/"));
-
-        System.out.println("Total Kilobytes: " + total);
+//        String url = "https://www.geeksforgeeks.org/";
+//
+//        new WebsiteExtractor().downloadWebsite(url);
+//
+//        new WebsiteExtractor().extractLinks(url);
+//
+//        long total = new WebsiteExtractor().countTotalKilobytes("src/main/java/downloadedPages/"+new WebsiteExtractor().extractWebname("https://www.geeksforgeeks.org/"));
+//
+//        System.out.println("Total Kilobytes: " + total);
     }
 }
